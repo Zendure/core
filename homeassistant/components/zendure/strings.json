@@ -1,0 +1,504 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_device%]",
+      "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]",
+      "different_device": "The device at this address is not the device that was set up before.",
+      "device_not_found": "The device joined your Wi-Fi network, but Home Assistant did not find it on your network. Discovery only works when the device and Home Assistant are on the same network segment. Add it manually with its IP address.",
+      "not_zendure_device": "The discovered device is not a Zendure device.",
+      "provisioned_unreachable": "The device joined your Wi-Fi network at {host}, but Home Assistant cannot reach it. Check that Home Assistant and the device can reach each other on your network, then add it manually.",
+      "provisioning_not_supported": "This device does not support Wi-Fi setup from Home Assistant. Set it up in the Zendure app, then add it with its IP address.",
+      "unknown": "[%key:common::config_flow::error::unknown%]",
+      "unsupported_device": "This Zendure model is not supported yet."
+    },
+    "error": {
+      "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]",
+      "cannot_connect_ble": "Could not connect to the device over Bluetooth. Move it closer to your Bluetooth adapter or proxy and try again.",
+      "invalid_host": "[%key:common::config_flow::error::invalid_host%]",
+      "invalid_wifi": "The network name must be 1 to 32 bytes long, and the password must be empty or 8 to 64 characters long.",
+      "provision_timeout": "The device did not report whether it joined the network. Check the network name and password and try again.",
+      "unknown": "[%key:common::config_flow::error::unknown%]",
+      "unsupported_device": "This Zendure model is not supported yet.",
+      "wifi_join_failed": "The device could not join the Wi-Fi network. Check the network name and password and try again."
+    },
+    "flow_title": "{name}",
+    "progress": {
+      "connecting": "The device joined your Wi-Fi network. Waiting for it to come online. This can take up to a minute.",
+      "provisioning": "Sending the Wi-Fi settings to the device and waiting for it to join the network. This can take up to a minute."
+    },
+    "step": {
+      "reconfigure": {
+        "data": {
+          "host": "[%key:common::config_flow::data::host%]"
+        },
+        "data_description": {
+          "host": "[%key:component::zendure::config::step::user::data_description::host%]"
+        },
+        "description": "Update the address of your Zendure device."
+      },
+      "user": {
+        "data": {
+          "host": "[%key:common::config_flow::data::host%]"
+        },
+        "data_description": {
+          "host": "The hostname or IP address of your Zendure device on your home network."
+        },
+        "description": "Set up your Zendure device to integrate with Home Assistant. The device must first be added to HEMS in the Zendure app, which enables its local interface."
+      },
+      "wifi": {
+        "data": {
+          "password": "[%key:common::config_flow::data::password%]",
+          "ssid": "Wi-Fi network"
+        },
+        "data_description": {
+          "password": "The password of the Wi-Fi network. Leave empty for an open network. It is only sent to the device and is not stored in Home Assistant.",
+          "ssid": "The name of the Wi-Fi network the device should join."
+        },
+        "description": "Connect the {name} to your Wi-Fi network. Home Assistant sends the network name and password to the device over Bluetooth."
+      },
+      "zeroconf_confirm": {
+        "description": "Do you want to add the {name} at {host} to Home Assistant?"
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "battery_heating": {
+        "name": "Battery heating"
+      },
+      "bypass": {
+        "name": "Bypass"
+      },
+      "reverse_flow": {
+        "name": "Reverse flow"
+      },
+      "soc_calibration": {
+        "name": "Battery calibration"
+      }
+    },
+    "number": {
+      "charge_limit": {
+        "name": "Charge limit"
+      },
+      "input_limit": {
+        "name": "Input limit"
+      },
+      "output_limit": {
+        "name": "Output limit"
+      }
+    },
+    "select": {
+      "ac_mode": {
+        "name": "AC mode",
+        "state": {
+          "input": "Input",
+          "output": "Output"
+        }
+      },
+      "grid_feed_in": {
+        "name": "Grid feed-in",
+        "state": {
+          "allow": "Allowed",
+          "disabled": "[%key:common::state::disabled%]",
+          "forbidden": "Forbidden"
+        }
+      },
+      "off_grid_mode": {
+        "name": "Off-grid mode",
+        "state": {
+          "eco": "Eco",
+          "normal": "Normal",
+          "off": "[%key:common::state::off%]"
+        }
+      }
+    },
+    "sensor": {
+      "battery_charge_power": {
+        "name": "Battery charge power"
+      },
+      "battery_discharge_power": {
+        "name": "Battery discharge power"
+      },
+      "battery_power": {
+        "name": "Battery power"
+      },
+      "current_fault_2400ac_plus": {
+        "name": "Current fault",
+        "state": {
+          "none": "No fault",
+          "1": "External flash failure",
+          "3": "Charging high temperature protection",
+          "4": "BMS board communication error",
+          "5": "WiFi and Bluetooth module communication error",
+          "6": "DSP communication error",
+          "7": "Boot incompatibility with project",
+          "11": "Device ID not written",
+          "12": "Product ID not written",
+          "13": "The serial number was not written",
+          "14": "Mppt communication failure",
+          "15": "Battery compatibility issues",
+          "16": "Battery short circuit monitoring fault",
+          "20": "Power-on prohibited",
+          "21": "Output relay stuck-closed fault",
+          "22": "Output relay stuck-open fault",
+          "23": "ARM relay closure timeout",
+          "24": "ARM grid-relay fault",
+          "25": "Communication fault",
+          "26": "Current sensor error",
+          "27": "eCap fault",
+          "28": "AC current DC component high",
+          "29": "AC output short circuit",
+          "30": "Bus soft-start failed",
+          "31": "Bus precharge failed",
+          "32": "Bus short circuit",
+          "33": "Inverter DC start timeout",
+          "35": "PV1 insulation fault",
+          "37": "PV start timeout",
+          "38": "PV1 short circuit",
+          "40": "Ground fault",
+          "43": "AC output abnormal",
+          "44": "Load overload protection",
+          "45": "Bus charging timeout",
+          "46": "Battery hot-swap fault",
+          "47": "Grid relay stuck-closed fault",
+          "48": "Grid relay stuck-open fault",
+          "49": "ARM output relay fault",
+          "50": "Inverter DC overvoltage",
+          "51": "Inverter DC undervoltage",
+          "52": "Grid voltage low",
+          "53": "Grid voltage high",
+          "54": "Grid frequency low",
+          "55": "Grid frequency high",
+          "56": "Grid average overvoltage",
+          "57": "Temperature too high",
+          "58": "Temperature too low",
+          "63": "DC overvoltage",
+          "64": "DC undervoltage",
+          "69": "Bus undervoltage",
+          "70": "Bus overcurrent",
+          "71": "AC overcurrent",
+          "72": "Grid side overcurrent",
+          "73": "Inverter side overcurrent",
+          "75": "PV fault",
+          "76": "Parallel operation line abnormal",
+          "77": "Fault 77",
+          "80": "Output relay 2 stuck-closed fault",
+          "81": "Output relay 2 stuck-open fault",
+          "82": "Grid power control abnormal",
+          "83": "1.5V voltage reference abnormal",
+          "84": "Insulation fault",
+          "85": "Leakage current fault",
+          "86": "Leakage current self-test fault",
+          "93": "PV communication fault",
+          "94": "PV source conflict",
+          "95": "High PV voltage",
+          "96": "Battery voltage step fluctuation",
+          "97": "DC voltage step fluctuation",
+          "98": "Abnormal sampling reference offset voltage",
+          "99": "Battery short circuit",
+          "100": "DC current imbalance",
+          "101": "TZ fault",
+          "104": "PV3 overvoltage",
+          "106": "PV4 overvoltage",
+          "108": "MPPT overload",
+          "201": "Precharge failure",
+          "202": "Sampling failure",
+          "203": "Battery cell failure",
+          "205": "Temperature sensor malfunction",
+          "206": "Discharge MOS fault",
+          "207": "Charging MOS fault",
+          "208": "Heating failure",
+          "209": "Current reference fault",
+          "210": "Multiple short circuit lockout",
+          "211": "Mos high temperature fault",
+          "221": "Overcurrent protection during charging",
+          "223": "Short circuit protection",
+          "225": "High temperature protection during charging",
+          "226": "High-temperature discharge protection",
+          "227": "Low temperature protection during charging",
+          "228": "Discharge low temperature protection",
+          "250": "Battery code not written",
+          "268": "DC short circuit protection",
+          "other": "Other fault"
+        }
+      },
+      "current_fault_5000_max_pro": {
+        "name": "[%key:component::zendure::entity::sensor::current_fault_2400ac_plus::name%]",
+        "state": {
+          "none": "[%key:component::zendure::entity::sensor::current_fault_2400ac_plus::state::none%]",
+          "1": "External flash failure",
+          "2": "BMS board communication error",
+          "3": "MPPT communication error",
+          "4": "Wi-Fi/Bluetooth module communication error",
+          "5": "DSP communication error",
+          "6": "Boot and project mismatch",
+          "7": "Device ID (IMEI) not programmed",
+          "8": "Product ID not programmed",
+          "9": "15-digit SN not programmed",
+          "10": "Battery compatibility fault",
+          "11": "Device ID not written",
+          "12": "Product ID not written",
+          "13": "The serial number was not written",
+          "14": "Mppt communication failure",
+          "15": "Battery compatibility issues",
+          "16": "Battery short circuit monitoring fault",
+          "20": "Power-on prohibited",
+          "22": "Output relay stuck-open fault",
+          "23": "ARM relay closure timeout",
+          "24": "ARM grid-relay fault",
+          "25": "Communication fault",
+          "26": "Current sensor error",
+          "27": "eCap fault",
+          "28": "AC current DC component high",
+          "29": "AC output short circuit",
+          "30": "Bus soft-start failed",
+          "31": "Bus precharge failed",
+          "32": "Bus short circuit",
+          "35": "PV1 insulation fault",
+          "36": "PV2 insulation fault",
+          "37": "PV start timeout",
+          "38": "PV1 short circuit",
+          "40": "Ground fault",
+          "43": "AC output abnormal",
+          "44": "Load overload protection",
+          "45": "Bus charging timeout",
+          "46": "Battery hot-swap fault",
+          "47": "Grid relay stuck-closed fault",
+          "48": "Grid relay stuck-open fault",
+          "49": "ARM output relay fault",
+          "50": "Inverter DC overvoltage",
+          "52": "Grid voltage low",
+          "53": "Grid voltage high",
+          "54": "Grid frequency low",
+          "55": "Grid frequency high",
+          "56": "Grid average overvoltage",
+          "57": "Temperature too high",
+          "58": "Temperature too low",
+          "63": "DC overvoltage",
+          "64": "DC undervoltage",
+          "69": "Bus undervoltage",
+          "70": "Bus overcurrent",
+          "71": "AC overcurrent",
+          "72": "Grid side overcurrent",
+          "73": "Inverter side overcurrent",
+          "75": "PV fault",
+          "76": "Parallel operation line abnormal",
+          "77": "Fault 77",
+          "80": "Output relay 2 stuck-closed fault",
+          "81": "Output relay 2 stuck-open fault",
+          "82": "Grid power control abnormal",
+          "83": "1.5V voltage reference abnormal",
+          "84": "Insulation fault",
+          "85": "Leakage current fault",
+          "86": "Leakage current self-test fault",
+          "93": "PV communication fault",
+          "94": "PV source conflict",
+          "101": "Startup prohibited",
+          "102": "Output relay closing fault",
+          "103": "Output relay opening fault",
+          "104": "ARM relay closing timeout",
+          "105": "ARM grid-connection relay fault",
+          "106": "Communication fault",
+          "107": "Current sensor error",
+          "108": "eCap fault",
+          "109": "High DC component in AC current",
+          "110": "AC output short circuit",
+          "111": "DC bus soft-start failure",
+          "112": "DC bus precharge failure",
+          "113": "DC bus short circuit",
+          "114": "Ground fault",
+          "115": "Inverter DC precharge failure",
+          "116": "AC soft-start timeout",
+          "117": "AC output abnormal",
+          "118": "Load overload protection",
+          "119": "DC bus charging timeout",
+          "120": "Battery hot-swap fault",
+          "121": "Grid-connection relay closing fault",
+          "122": "Grid-connection relay opening fault",
+          "123": "ARM output relay fault",
+          "124": "Inverter DC overvoltage",
+          "125": "Inverter DC undervoltage",
+          "126": "Low grid voltage",
+          "127": "High grid voltage",
+          "128": "Low grid frequency",
+          "129": "High grid frequency",
+          "130": "Grid average voltage overvoltage",
+          "131": "Overtemperature",
+          "132": "Undertemperature",
+          "133": "Overload alarm",
+          "134": "Battery voltage loss",
+          "135": "Battery terminal overvoltage",
+          "136": "Battery terminal undervoltage",
+          "137": "Battery terminal overcurrent",
+          "138": "DC bus overvoltage",
+          "139": "DC bus undervoltage",
+          "140": "DC bus overcurrent",
+          "141": "AC overcurrent",
+          "142": "Grid-side overcurrent",
+          "143": "Inverter-side overcurrent",
+          "144": "Parallel connection line abnormal",
+          "145": "Battery voltage detection fault",
+          "146": "Output relay 2 closing fault",
+          "147": "Output relay 2 opening fault",
+          "148": "Grid-connected power control abnormality",
+          "149": "1.5V voltage reference abnormality",
+          "150": "Insulation fault",
+          "151": "Leakage current fault",
+          "152": "Leakage current self-test fault",
+          "201": "Precharge failure",
+          "202": "Sampling failure",
+          "203": "Battery cell failure",
+          "205": "Temperature sensor malfunction",
+          "206": "Discharge MOS fault",
+          "207": "Charging MOS fault",
+          "208": "Heating failure",
+          "209": "Current reference fault",
+          "210": "Multiple short circuit lockout",
+          "211": "Mos high temperature fault",
+          "221": "Overcurrent protection during charging",
+          "223": "Short circuit protection",
+          "225": "High temperature protection during charging",
+          "226": "High-temperature discharge protection",
+          "227": "Low temperature protection during charging",
+          "228": "Discharge low temperature protection",
+          "250": "Battery code not written",
+          "301": "PV startup timeout",
+          "302": "PV fault",
+          "303": "PV communication fault",
+          "304": "PV sensor fault",
+          "305": "MPPT DC undervoltage",
+          "306": "PV1 output undervoltage fault",
+          "307": "PV2 output undervoltage fault",
+          "308": "PV3 output undervoltage fault",
+          "309": "PV4 output undervoltage fault",
+          "310": "PV1 short circuit",
+          "311": "PV2 short circuit",
+          "312": "PV3 short circuit",
+          "313": "PV4 short circuit",
+          "314": "PV overtemperature fault",
+          "501": "Charging MOS open-circuit fault",
+          "502": "Discharging MOS open-circuit fault",
+          "503": "Pre-discharge MOS fault",
+          "504": "DC-DC high-side switch fault",
+          "505": "Battery-side short circuit fault",
+          "506": "Secondary overtemperature fault",
+          "507": "Cell fault",
+          "508": "Sampling wire disconnection fault",
+          "509": "Internal component fault",
+          "510": "Total voltage sampling fault",
+          "511": "Cell NTC fault",
+          "512": "PCB NTC fault",
+          "513": "Heatsink NTC fault",
+          "514": "Heating fault",
+          "515": "Hot-swap fault",
+          "516": "Charging MOS short-circuit fault",
+          "517": "Discharging MOS short-circuit fault",
+          "701": "DC undervoltage",
+          "702": "DC overvoltage",
+          "703": "Battery terminal overvoltage",
+          "704": "Battery terminal undervoltage",
+          "705": "Battery terminal overcurrent",
+          "706": "Battery voltage step change",
+          "707": "DC voltage step change",
+          "708": "Fan 1 fault",
+          "709": "Fan 2 fault",
+          "710": "DC current imbalance",
+          "711": "DC current short circuit",
+          "712": "Precharge MOS fault",
+          "713": "DC soft-start timeout",
+          "714": "Hardware TZ protection",
+          "715": "Battery overpower",
+          "716": "Battery charging overcurrent",
+          "717": "LLC CMPSS protection",
+          "718": "Battery short circuit",
+          "719": "DC high-side switch damage",
+          "720": "Battery CMPSS protection",
+          "721": "Communication failure",
+          "722": "LLC soft-start failure",
+          "other": "[%key:component::zendure::entity::sensor::current_fault_2400ac_plus::state::other%]"
+        }
+      },
+      "fault_count": {
+        "name": "Active faults"
+      },
+      "grid_input_power": {
+        "name": "Grid input power"
+      },
+      "grid_off_power": {
+        "name": "Off-grid power"
+      },
+      "max_cell_voltage": {
+        "name": "Maximum cell voltage"
+      },
+      "max_charge_power": {
+        "name": "Maximum charge power"
+      },
+      "max_output_power": {
+        "name": "Maximum output power"
+      },
+      "min_cell_voltage": {
+        "name": "Minimum cell voltage"
+      },
+      "output_home_power": {
+        "name": "Output to home power"
+      },
+      "pack_count": {
+        "name": "Battery packs"
+      },
+      "pack_state": {
+        "name": "Battery state",
+        "state": {
+          "charging": "[%key:common::state::charging%]",
+          "discharging": "[%key:common::state::discharging%]",
+          "standby": "[%key:common::state::standby%]"
+        }
+      },
+      "remaining_discharge_time": {
+        "name": "Remaining discharge time"
+      },
+      "software_version": {
+        "name": "Software version"
+      },
+      "solar_input_power": {
+        "name": "Solar input power"
+      },
+      "solar_power_1": {
+        "name": "Solar power 1"
+      },
+      "solar_power_2": {
+        "name": "Solar power 2"
+      },
+      "solar_power_3": {
+        "name": "Solar power 3"
+      },
+      "solar_power_4": {
+        "name": "Solar power 4"
+      }
+    },
+    "switch": {
+      "indicator_light": {
+        "name": "Indicator light"
+      },
+      "temporary_settings": {
+        "name": "Temporary settings"
+      }
+    }
+  },
+  "exceptions": {
+    "communication_error": {
+      "message": "An error occurred while communicating with the Zendure device: {error}"
+    },
+    "invalid_value": {
+      "message": "The value for {key} is not accepted: {error}"
+    },
+    "unknown_error": {
+      "message": "An unknown error occurred with the Zendure device: {error}"
+    },
+    "write_not_confirmed": {
+      "message": "The Zendure device did not confirm the new value for {key}."
+    },
+    "write_rejected": {
+      "message": "The Zendure device rejected the new value for {key}: {error}"
+    }
+  }
+}

@@ -715,6 +715,10 @@ ZEROCONF = {
             "domain": "velux",
             "name": "velux_klf_lan_*",
         },
+        {
+            "domain": "zendure",
+            "name": "zendure-*",
+        },
     ],
     "_https._tcp.local.": [
         {

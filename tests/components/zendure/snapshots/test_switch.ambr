@@ -1,0 +1,101 @@
+# serializer version: 1
+# name: test_entities[switch][switch.solarflow_2400_ac_indicator_light-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'switch.solarflow_2400_ac_indicator_light',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Indicator light',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Indicator light',
+    'platform': 'zendure',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'indicator_light',
+    'unique_id': 'TESTDEV00000001_lampSwitch',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[switch][switch.solarflow_2400_ac_indicator_light-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'SolarFlow 2400 AC+ Indicator light',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.solarflow_2400_ac_indicator_light',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'on',
+  })
+# ---
+# name: test_entities[switch][switch.solarflow_2400_ac_temporary_settings-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'switch.solarflow_2400_ac_temporary_settings',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Temporary settings',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Temporary settings',
+    'platform': 'zendure',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'temporary_settings',
+    'unique_id': 'TESTDEV00000001_smartMode',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[switch][switch.solarflow_2400_ac_temporary_settings-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'SolarFlow 2400 AC+ Temporary settings',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.solarflow_2400_ac_temporary_settings',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'on',
+  })
+# ---

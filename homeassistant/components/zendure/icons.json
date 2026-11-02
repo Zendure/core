@@ -1,0 +1,108 @@
+{
+  "entity": {
+    "binary_sensor": {
+      "bypass": {
+        "default": "mdi:transit-skip"
+      },
+      "reverse_flow": {
+        "default": "mdi:swap-horizontal"
+      },
+      "soc_calibration": {
+        "default": "mdi:battery-sync"
+      }
+    },
+    "number": {
+      "charge_limit": {
+        "default": "mdi:battery-arrow-up"
+      },
+      "input_limit": {
+        "default": "mdi:transmission-tower-import"
+      },
+      "output_limit": {
+        "default": "mdi:transmission-tower-export"
+      }
+    },
+    "select": {
+      "ac_mode": {
+        "default": "mdi:sine-wave"
+      },
+      "grid_feed_in": {
+        "default": "mdi:transmission-tower"
+      },
+      "off_grid_mode": {
+        "default": "mdi:power-socket"
+      }
+    },
+    "sensor": {
+      "battery_charge_power": {
+        "default": "mdi:battery-charging"
+      },
+      "battery_discharge_power": {
+        "default": "mdi:battery-arrow-down"
+      },
+      "current_fault_2400ac_plus": {
+        "default": "mdi:alert-circle",
+        "state": {
+          "none": "mdi:check-circle-outline"
+        }
+      },
+      "current_fault_5000_max_pro": {
+        "default": "mdi:alert-circle",
+        "state": {
+          "none": "mdi:check-circle-outline"
+        }
+      },
+      "fault_count": {
+        "default": "mdi:alert-circle-outline"
+      },
+      "grid_input_power": {
+        "default": "mdi:transmission-tower-import"
+      },
+      "grid_off_power": {
+        "default": "mdi:power-socket"
+      },
+      "output_home_power": {
+        "default": "mdi:home-lightning-bolt"
+      },
+      "pack_count": {
+        "default": "mdi:battery-plus-variant"
+      },
+      "pack_state": {
+        "default": "mdi:battery",
+        "state": {
+          "charging": "mdi:battery-charging",
+          "discharging": "mdi:battery-arrow-down"
+        }
+      },
+      "remaining_discharge_time": {
+        "default": "mdi:timer-sand"
+      },
+      "solar_input_power": {
+        "default": "mdi:solar-power"
+      },
+      "solar_power_1": {
+        "default": "mdi:solar-panel"
+      },
+      "solar_power_2": {
+        "default": "mdi:solar-panel"
+      },
+      "solar_power_3": {
+        "default": "mdi:solar-panel"
+      },
+      "solar_power_4": {
+        "default": "mdi:solar-panel"
+      }
+    },
+    "switch": {
+      "indicator_light": {
+        "default": "mdi:led-on",
+        "state": {
+          "off": "mdi:led-off"
+        }
+      },
+      "temporary_settings": {
+        "default": "mdi:content-save-off"
+      }
+    }
+  }
+}
